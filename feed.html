@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Feed</title>
+    
+    <!-- Optional Default Favicon to avoid 404 logs -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23059669'/%3E%3C/svg%3E">
+
+    <!-- Meta tags for Search Engine Optimization (SEO) -->
+    <meta name="description" content="This page has moved.">
+    <meta name="robots" content="index, follow">
+    <link class="js-canonical" rel="canonical" href="https://docs.google.com/document/d/1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8/export?format=pdf">
+
+    <!-- Open Graph tags for rich previews on social sites -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RSS Feed">
+    <meta property="og:description" content="This page has moved.">
+    <meta property="og:url" content="https://docs.google.com/document/d/1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8/export?format=pdf">
+
+    <!-- Immediate Redirect Fallback for Non-JS/crawler bots -->
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=https://docs.google.com/document/d/1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8/export?format=pdf">
+    </noscript>
+
+    <!-- Tailwind Styling for instant clean styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .custom-brand-spinner {
+            border-bottom-color: #059669;
+        }
+        .custom-brand-text {
+            color: #059669;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Accessible Card Frame -->
+    <main class="max-w-md w-full bg-white p-8 rounded-2xl shadow-md border border-slate-100 text-center">
+        <!-- Spinner -->
+        <div class="animate-spin rounded-full h-10 w-10 border-4 border-slate-200 custom-brand-spinner mx-auto mb-6"></div>
+        
+        <h1 class="text-xl font-bold text-slate-900 mb-2">RSS Feed</h1>
+        <p class="text-slate-500 mb-6 text-sm leading-relaxed">This page has moved.</p>
+        
+        <p class="text-xs text-slate-400">
+            If you are not redirected in <span id="countdown" class="font-semibold text-slate-600">0</span> seconds, please 
+            <a href="https://docs.google.com/document/d/1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8/export?format=pdf" target="_self" class="custom-brand-text font-bold hover:underline">click here</a>.
+        </p>
+    </main>
+
+    <!-- Redirection Logic Core Script -->
+    <script>
+        (function() {
+            const targetUrl = "https://docs.google.com/document/d/1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8/export?format=pdf";
+            const delay = 0;
+            const targetType = "_self";
+            let countdown = delay;
+
+            // Same-tab and New-tab redirection routine
+            function proceedToRedirect() {
+                if (targetType === "_blank") {
+                    window.open(targetUrl, "_blank");
+                } else {
+                    window.location.replace(targetUrl);
+                }
+            }
+
+            if (delay <= 0) {
+                // Instantly swap redirection target if delay is zero
+                proceedToRedirect();
+            } else {
+                const counterElement = document.getElementById('countdown');
+                const timer = setInterval(() => {
+                    countdown--;
+                    if (counterElement) {
+                        counterElement.textContent = countdown;
+                    }
+                    if (countdown <= 0) {
+                        clearInterval(timer);
+                        proceedToRedirect();
+                    }
+                }, 1000);
+            }
+        })();
+    </script>
+</body>
+</html>
