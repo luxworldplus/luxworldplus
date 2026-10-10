@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXWORLD+ Read</title>
+    
+    <!-- 
+      PREMIUM BASE64 ENCODED FAVICON (R in a Circle with Flowers)
+    -->
+    <link rel="icon" type="image/svg+xml" href="">
+
+    <!-- Tailwind CSS for modern structure -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: rgb(60, 192, 189);
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 90% 80%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        /* Customize Google Doc imported styles to look highly professional & readable for users */
+        .gdoc-content {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #0f172a;
+            line-height: 1.9;
+            font-size: 24px; /* 11px + 13px baseline sizing */
+        }
+
+        /* Ensure default nested tags conform to the 24px baseline size */
+        .gdoc-content p, .gdoc-content span, .gdoc-content li, .gdoc-content td, .gdoc-content th {
+            font-size: 24px;
+        }
+        
+        .gdoc-content a {
+            color: #0f766e;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .gdoc-content a:hover {
+            color: #115e59;
+        }
+
+        /* Enforce bold and underline styling from the Google Doc */
+        .gdoc-content strong, .gdoc-content b, .gdoc-content [style*="font-weight: bold"], .gdoc-content [style*="font-weight:bold"] {
+            font-weight: 800 !important;
+            color: #000000 !important;
+        }
+
+        .gdoc-content u, .gdoc-content [style*="text-decoration: underline"], .gdoc-content [style*="text-decoration:underline"] {
+            text-decoration: underline !important;
+        }
+
+        .gdoc-content h1, .gdoc-content h2, .gdoc-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #0f172a;
+            font-weight: 800;
+            margin-top: 1.8em;
+            margin-bottom: 0.6em;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+        .gdoc-content h1 { font-size: 38px; } /* 25px + 13px scale */
+        .gdoc-content h2 { font-size: 32px; } /* 19px + 13px scale */
+        .gdoc-content h3 { font-size: 28px; } /* 15px + 13px scale */
+        
+        .gdoc-content p {
+            margin-bottom: 1.6em;
+        }
+        
+        .gdoc-content ul, .gdoc-content ol {
+            margin-left: 2.5rem;
+            margin-bottom: 1.6rem;
+            list-style-type: disc;
+        }
+        .gdoc-content li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Image treatment to make them gorgeous with high-reliability fallback rendering */
+        .gdoc-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin: 2.5rem auto;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            display: block;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: transform 0.3s;
+        }
+        
+        .gdoc-content img:hover {
+            transform: scale(1.01);
+        }
+
+        /* Custom image placeholder if image fails to load */
+        .img-fallback-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            padding: 2.5rem;
+            border-radius: 16px;
+            margin: 2rem auto;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        .gdoc-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            font-size: 24px;
+        }
+        .gdoc-content td, .gdoc-content th {
+            border: 1px solid #e2e8f0;
+            padding: 12px 16px;
+        }
+        .gdoc-content th {
+            background-color: #f8fafc;
+            font-weight: 700;
+        }
+        
+        /* Glassmorphism Panel styles */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        /* Custom Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(60, 192, 189, 0.4);
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(60, 192, 189, 0.6);
+        }
+
+        /* Telemetry privacy options UI */
+        .privacy-opt {
+            border: 1px solid #334155;
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .privacy-opt:hover {
+            border-color: #14b8a6;
+        }
+        .privacy-opt.active {
+            border-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 flex flex-col items-center">
+
+    <div class="max-w-7xl w-full flex-grow flex flex-col gap-6">
+        
+        <!-- Utility Navbar (Minimal, Embedded-Friendly, No Logos) -->
+        <header class="flex justify-between items-center w-full z-10 py-2">
+            <div id="navigation-left" class="flex items-center gap-4">
+                <!-- LUXWORLD+ Nav Logo -->
+                <a href="https://luxworldplus.com" target="_blank" class="px-4 py-2 bg-white/95 hover:bg-white text-slate-800 font-bold rounded-xl shadow-lg transition hover:scale-105 active:scale-95 flex items-center gap-2.5 border border-slate-100 text-sm" style="text-decoration: none;">
+                    <img src=""" class="h-10 sm:h-12 max-h-12 w-auto object-contain hidden" onload="if(!this.src.includes('YOUR_BASE64_IMAGE_HERE')) this.classList.remove('hidden');" onerror="this.style.display='none';">
+                    <span class="text-teal-800 tracking-wide font-extrabold text-sm uppercase">LUXWORLD+</span>
+                    <span class="text-slate-400 text-xs font-normal border-l border-slate-200 pl-2.5 hidden sm:inline">Back to Main</span>
+                </a>
+                
+                <!-- Dynamically populated Back button when reading -->
+                <button id="btn-back-to-grid" onclick="navigateToGrid()" class="hidden px-5 py-2.5 bg-white/95 hover:bg-white text-slate-800 font-bold rounded-xl shadow-lg transition hover:scale-105 active:scale-95 flex items-center gap-2 border border-slate-100 text-sm">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Articles
+                </button>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="toggleManagerPanel()" class="px-4 py-2 bg-white/90 hover:bg-white text-teal-800 font-semibold rounded-xl shadow-lg transition hover:scale-105 active:scale-95 flex items-center gap-2 border border-slate-100 text-xs" title="Configure Document URLs & Privacy">
+                    <i data-lucide="database" class="w-4 h-4"></i> System Admin and Settings
+                </button>
+                <button onclick="window.location.reload()" class="p-2.5 bg-white/90 hover:bg-white text-slate-700 rounded-xl shadow-lg transition hover:scale-105 active:scale-95 border border-slate-100" title="Refresh Feed">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 animate-once"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dynamic Grid Dashboard (Visible by default) -->
+        <main id="dashboard-view" class="space-y-6">
+            
+            <!-- Real-time Search Panel ("Find Article") -->
+            <div class="bg-white/95 backdrop-blur shadow-md rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between border border-white/40">
+                <div class="relative w-full sm:max-w-md">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                        <i data-lucide="search" class="w-4.5 h-4.5"></i>
+                    </span>
+                    <input type="text" id="search-input" oninput="handleSearch()" placeholder="Search articles like an AI search engine..." class="w-full bg-slate-50 pl-11 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-slate-850 shadow-inner font-medium">
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="search-engine-status" class="hidden text-xs font-mono text-teal-700 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100 flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-teal-500 animate-ping"></div>
+                        <span id="search-engine-status-text">Streaming search results...</span>
+                    </div>
+                    <div id="article-count-badge" class="px-3.5 py-1.5 bg-teal-50 text-teal-800 border border-teal-100 text-xs font-bold rounded-lg whitespace-nowrap">
+                        0 Articles
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Indicator for Dashboard -->
+            <div id="grid-loading" class="flex flex-col items-center justify-center py-32 gap-4 text-white">
+                <div class="w-14 h-14 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                <span class="text-base font-bold tracking-wide">Syncing Dynamic Article Library...</span>
+            </div>
+
+            <!-- Empty Directory Fallback -->
+            <div id="grid-empty" class="hidden glass-panel rounded-2xl p-12 text-center max-w-md mx-auto space-y-4 shadow-2xl">
+                <div class="w-16 h-16 bg-rose-50 text-rose-600 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                    <i data-lucide="alert-circle" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-900">No Documents Found</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    We couldn't extract references from your primary directory document. Ensure standard hyperlinked documents are added inside.
+                </p>
+            </div>
+
+            <!-- Responsive Grid Setup -->
+            <div id="articles-grid" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Javascript maps catalog into styled card grids here -->
+            </div>
+
+            <!-- Load More Controls -->
+            <div id="load-more-container" class="hidden flex justify-center pt-4 pb-8">
+                <button onclick="loadMoreArticles()" class="px-6 py-3 bg-white hover:bg-slate-50 text-teal-800 font-bold rounded-xl shadow-lg transition hover:scale-105 active:scale-95 flex items-center gap-2 border border-slate-100 text-sm">
+                    <i data-lucide="chevron-down" class="w-4 h-4 animate-pulse"></i> Load More Articles
+                </button>
+            </div>
+        </main>
+
+        <!-- Reader Workspace -->
+        <main id="reader-view" class="hidden glass-panel rounded-2xl p-6 md:p-12 shadow-2xl flex flex-col min-h-[600px] transition-all duration-300">
+            <!-- Loader Frame -->
+            <div id="article-loading" class="flex-grow flex flex-col items-center justify-center py-20 gap-3 text-slate-400">
+                <div class="w-10 h-10 border-4 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+                <span class="text-xs font-semibold">Fetching Document Content...</span>
+            </div>
+
+            <!-- Content Area -->
+            <article id="article-content" class="hidden flex-grow flex flex-col">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-slate-100 pb-6 mb-8 gap-4">
+                    <div>
+                        <h2 id="reader-title" class="text-3xl md:text-4.5xl font-extrabold text-slate-900 tracking-tight leading-tight">Article Header</h2>
+                        <div class="flex items-center gap-2 mt-2 text-slate-400 text-xs font-semibold">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Live Synced Reader
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <!-- Copy Link Button -->
+                        <button id="copy-link-btn" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition flex items-center gap-2 shadow-sm border border-slate-200" title="Copy article presentation link">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Link
+                        </button>
+                        <!-- Export Offline Button -->
+                        <button id="export-offline-btn" onclick="exportOffline()" class="px-4 py-2.5 bg-teal-600 hover:bg-teal-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-2 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]" title="Download this article for reading without internet">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Export Offline
+                        </button>
+                        <button id="open-original-btn" target="_blank" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition flex items-center gap-2 shadow-sm border border-slate-200">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Google Doc
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Scrape Header Target Area for Extracted Dates / Signatures -->
+                <div id="reader-metadata-banner" class="w-full"></div>
+
+                <div id="reader-body" class="gdoc-content">
+                    <!-- Loaded document gets injected here -->
+                </div>
+
+                <!-- PREMIUM COMMENTS MODULE INTEGRATION -->
+                <section class="mt-16 pt-12 border-t border-slate-200">
+                    <div class="max-w-4xl mx-auto space-y-10">
+                        <div class="flex items-center gap-3 border-b border-slate-100 pb-4">
+                            <i data-lucide="message-square" class="w-6 h-6 text-teal-700"></i>
+                            <h3 class="text-xl font-bold text-slate-900 tracking-tight">Discussions & Thoughts</h3>
+                        </div>
+
+                        <!-- Live Comments Listing Container -->
+                        <div class="space-y-6">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Recent Comments</h4>
+                            <div id="comments-loader" class="flex justify-center items-center py-6 gap-2 text-slate-400 text-xs">
+                                <div class="w-4 h-4 border-2 border-teal-500 border-t-transparent rounded-full animate-spin"></div>
+                                <span>Loading comments feed...</span>
+                            </div>
+                            <div id="comments-empty-state" class="hidden p-6 bg-slate-50 border border-slate-100 rounded-2xl text-center text-xs text-slate-400">
+                                No comments posted yet. Be the first to share your thoughts below!
+                            </div>
+                            
+                            <!-- Comments Feed Target -->
+                            <div id="comments-feed-container" class="space-y-4">
+                                <!-- Dynamic comments injected here -->
+                            </div>
+
+                            <!-- Show More Comments Pagination Trigger -->
+                            <div id="load-more-comments-container" class="hidden flex justify-center pt-2">
+                                <button onclick="loadMoreComments()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl shadow-sm transition hover:scale-105 active:scale-95 flex items-center gap-1.5 border border-slate-200">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i> Show Older Comments
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Elegant Add Comment Form Panel -->
+                        <div class="bg-slate-50/50 border border-slate-100 p-6 md:p-8 rounded-2xl space-y-6">
+                            <div>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug">Share your thoughts</h4>
+                                <p class="text-xs text-slate-500 mt-1">Your email will remain completely secure and private.</p>
+                            </div>
+
+                            <!-- Targeted Invisible Submission Iframe (Enables redirect-free submissions) -->
+                            <iframe name="comment_submit_target" id="comment_submit_target" class="hidden"></iframe>
+
+                            <!-- Standardized Prefill Auto-Submit Google Form -->
+                            <form 
+                                id="comment-submission-form" 
+                                action="https://docs.google.com/forms/d/e/1FAIpQLScEv7aXi7Bq-ywcq2qdR3c0_s9lLVsZ9avNSUE9PWjkXyYFBw/formResponse" 
+                                method="POST" 
+                                target="comment_submit_target" 
+                                class="space-y-4"
+                                onsubmit="registerSubmission()"
+                            >
+                                <!-- Auto-Injected Clean/Stripped Article URL -->
+                                <input type="hidden" name="entry.1856052371" id="form-article-url-field">
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="space-y-1">
+                                        <label for="form-name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Your Name</label>
+                                        <input type="text" name="entry.142523739" id="form-name" required placeholder="e.g. Robin" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850">
+                                    </div>
+                                    <div class="space-y-1">
+                                        <label for="form-email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
+                                        <input type="email" name="entry.1202066942" id="form-email" required placeholder="e.g. robin@domain.com" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850">
+                                    </div>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <label for="form-comment" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Your Comment</label>
+                                    <textarea name="entry.1801853130" id="form-comment" rows="4" required placeholder="What are your thoughts on this story? Keep it respectful..." class="w-full bg-white border border-slate-200 p-4 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850"></textarea>
+                                </div>
+
+                                <div class="flex justify-between items-center pt-2">
+                                    <div id="comment-status-msg" class="text-xs font-semibold text-emerald-600 hidden flex items-center gap-1.5 animate-pulse">
+                                        <i data-lucide="check" class="w-4 h-4"></i> Comment submitted successfully!
+                                    </div>
+                                    <button type="submit" id="comment-submit-btn" class="ml-auto px-6 py-3 bg-teal-700 hover:bg-teal-800 text-white rounded-xl text-xs font-bold transition duration-200 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2 shadow-md">
+                                        Post Thought <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+    </div>
+
+    <!-- Slide-over Data Sync Panel -->
+    <div id="manager-panel" class="fixed inset-y-0 right-0 max-w-md w-full bg-slate-900 text-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 flex flex-col border-l border-slate-800">
+        <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-teal-400 flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4"></i> Data & Privacy Config
+            </h3>
+            <button onclick="toggleManagerPanel()" class="p-1 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <div class="p-6 flex-grow overflow-y-auto space-y-6">
+            <!-- Directory Config -->
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-400 uppercase">Primary Google Doc Index URL or ID</label>
+                <input type="text" id="config-index-id" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-teal-300 focus:outline-none focus:border-teal-500" placeholder="Paste your Google Doc URL or ID">
+            </div>
+
+            <!-- 4-Level Privacy & Diagnostics Control -->
+            <div class="space-y-3 pt-2 border-t border-slate-800">
+                <div class="flex justify-between items-center">
+                    <label class="block text-xs font-bold text-slate-400 uppercase">📡 Privacy & Diagnostic Level</label>
+                    <span id="telemetryStatus" class="text-[10px] text-emerald-400 font-bold">Online 🟢</span>
+                </div>
+
+                <div class="privacy-opt" id="privacyLevel3" onclick="setPrivacyLevel(3)">
+                    <div class="flex justify-between items-center text-xs font-bold text-teal-300">
+                        <span>Level 3: Full Experience</span>
+                        <span class="bg-emerald-500/20 text-emerald-300 text-[9px] px-2 py-0.5 rounded uppercase">Recommended</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-snug">Syncs IP, coarse location, ISP, browser referrer, article queries, comment name/email, and device specs.</p>
+                </div>
+
+                <div class="privacy-opt" id="privacyLevel2" onclick="setPrivacyLevel(2)">
+                    <div class="flex justify-between items-center text-xs font-bold text-blue-300">
+                        <span>Level 2: Balanced Analytics</span>
+                        <span class="bg-blue-500/20 text-blue-300 text-[9px] px-2 py-0.5 rounded uppercase">Balanced</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-snug">Masks last IP octet. Stores generic region, search queries, comment name/email, and functional app metrics.</p>
+                </div>
+
+                <div class="privacy-opt" id="privacyLevel1" onclick="setPrivacyLevel(1)">
+                    <div class="flex justify-between items-center text-xs font-bold text-amber-300">
+                        <span>Level 1: Minimal Functional</span>
+                        <span class="bg-amber-500/20 text-amber-300 text-[9px] px-2 py-0.5 rounded uppercase">Minimal</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-snug">Sends comment name/email and article name with anonymized placeholders for IP, location, and device details.</p>
+                </div>
+
+                <div class="privacy-opt" id="privacyLevel0" onclick="setPrivacyLevel(0)">
+                    <div class="flex justify-between items-center text-xs font-bold text-rose-300">
+                        <span>Level 0: Strict Privacy</span>
+                        <span class="bg-rose-500/20 text-rose-300 text-[9px] px-2 py-0.5 rounded uppercase">Comments Only</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-1 leading-snug">Deactivates background network tracking telemetry entirely; transmits comment name/email and article name when interacting with comments.</p>
+                </div>
+
+                <button onclick="triggerDataSyncPipeline(true)" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-xl text-teal-300 transition border border-slate-700 flex items-center justify-center gap-1.5">
+                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Force Telemetry Sync
+                </button>
+            </div>
+
+            <!-- Import/Export Config Area -->
+            <div class="space-y-2 pt-2 border-t border-slate-800">
+                <div class="flex justify-between items-center">
+                    <label class="block text-xs font-bold text-slate-400 uppercase font-mono">Registry Configuration JSON (Active Session)</label>
+                    <button onclick="copyRegistryJSON()" class="text-[10px] text-teal-400 font-semibold hover:underline">Copy JSON</button>
+                </div>
+                <textarea id="config-registry-json" rows="6" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-[10px] font-mono text-emerald-400 focus:outline-none focus:border-emerald-500" placeholder="Registry Data JSON String"></textarea>
+            </div>
+
+            <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-2 text-slate-400">
+                <h4 class="font-bold text-white flex items-center gap-1.5 text-xs">
+                    <i data-lucide="info" class="w-4 h-4 text-teal-400"></i> Publishing Rules:
+                </h4>
+                <ul class="list-disc pl-4 space-y-1 text-[11px]">
+                    <li>Ensure your Google Doc is shared to "Anyone with the link can view".</li>
+                    <li>Add hyperlinks to other child documents inside your Master Index Google Doc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-slate-800 bg-slate-950 flex gap-2">
+            <button onclick="saveAndApplySettings()" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-500 text-white rounded-xl text-xs font-bold transition">
+                Apply & Reload Workspace
+            </button>
+            <button onclick="resetToDefaults()" class="py-2.5 px-4 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition">
+                Reset
+            </button>
+        </div>
+    </div>
+
+    <!-- FLOATING CONSENT BANNER -->
+    <div id="consent-banner" class="fixed bottom-6 right-6 max-w-sm bg-slate-900 border-2 border-teal-500/40 text-white p-5 rounded-2xl shadow-2xl z-50 hidden animate-bounce-once">
+        <div class="flex items-center gap-2 text-teal-300 font-bold text-sm mb-1">
+            <i data-lucide="shield-check" class="w-4 h-4"></i> Privacy & Telemetry Preference
+        </div>
+        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+            LUXWORLD+ Read is configured to <span class="font-bold text-teal-400">Level 3 (Full Customization)</span> to monitor reading performance and system diagnostics.
+        </p>
+        <div class="flex gap-2">
+            <button onclick="acceptConsent(3)" class="flex-1 py-2 bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs rounded-xl transition">
+                Accept Level 3
+            </button>
+            <button onclick="openPrivacySettings()" class="py-2 px-3 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-xl transition border border-slate-700">
+                Configure
+            </button>
+        </div>
+    </div>
+
+    <!-- Invisible Iframe for Telemetry Auto-Submission -->
+    <iframe id="telemetrySubmissionFrame" name="telemetrySubmissionFrame" class="hidden" style="display:none; width:0; height:0;"></iframe>
+
+    <!-- Backdrop Blur overlay -->
+    <div id="panel-overlay" onclick="toggleManagerPanel()" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300"></div>
+
+    <script>
+        const LOCAL_STORAGE_KEY_ID = "gdoc_reader_index_id";
+        const DEFAULT_INDEX_ID = "1_uO1Uwals_ooYWogV9SHFtH5DuIC5mioXddj10QWGM8";
+
+        // Google Sheets Database parameters for comments
+        const COMMENTS_SHEET_ID = "1pujYuucAvqJB5ZAz9vQ5lv5cpKCHjOZk5WURWXbCKhk";
+        const COMMENTS_GID = "1009570863";
+
+        // Active Comments state
+        let activeArticleComments = [];
+        let visibleCommentsCount = 5;
+        let isCommentSubmitting = false;
+
+        // Telemetry & Network Tracker state
+        let privacyLevel = localStorage.getItem("lwp_read_privacy_level") !== null 
+            ? parseInt(localStorage.getItem("lwp_read_privacy_level")) 
+            : null;
+
+        let networkTracker = {
+            ip: "Resolving...",
+            city: "Locating...",
+            region: "Locating...",
+            country: "Locating...",
+            org: "Identifying ISP..."
+        };
+
+        function extractDocId(input) {
+            if (!input) return "";
+            let trimmed = input.trim().replace(/^["']|["']$/g, '');
+            const decoded = decodeURIComponent(trimmed);
+            const docIdMatch = decoded.match(/\/document\/d\/([a-zA-Z0-9-_]+)/);
+            if (docIdMatch) return docIdMatch[1];
+            const slideIdMatch = decoded.match(/\/presentation\/d\/([a-zA-Z0-9-_]+)/);
+            if (slideIdMatch) return slideIdMatch[1];
+            return trimmed.split('/')[0].split('?')[0].split('#')[0];
+        }
+
+        let PRIMARY_INDEX_DOC_ID = extractDocId(localStorage.getItem(LOCAL_STORAGE_KEY_ID) || DEFAULT_INDEX_ID);
+        let articleRegistry = {}; // Starts clean in memory on every reload!
+        let visibleArticlesCount = 9;
+        let searchQuery = "";
+
+        // Standardized, high quality SVGs matching the brand color palette
+        const DEFAULT_THUMBNAILS = [
+            'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%2314b8a6\' opacity=\'0.1\'/><rect x=\'40\' y=\'40\' width=\'320\' height=\'170\' rx=\'12\' fill=\'%23ffffff\' stroke=\'%232dd4bf\' stroke-width=\'2\'/><circle cx=\'120\' cy=\'125\' r=\'45\' fill=\'%232dd4bf\' opacity=\'0.3\'/><line x1=\'200\' y1=\'105\' x2=\'320\' y2=\'105\' stroke=\'%2314b8a6\' stroke-width=\'4\' stroke-linecap=\'round\'/></svg>',
+            'data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%2314b8a6\' opacity=\'0.15\'/><path d=\'M150 70 L250 70 L280 180 L120 180 Z\' fill=\'%23ffffff\' stroke=\'%230f766e\' stroke-width=\'3\'/></svg>'
+        ];
+
+        function getDeviceOS() {
+            const ua = navigator.userAgent;
+            if (/windows/i.test(ua)) return "Windows OS";
+            if (/macintosh|mac os x/i.test(ua)) return "macOS Intel/ARM";
+            if (/android/i.test(ua)) return "Android OS";
+            if (/iphone|ipad|ipod/i.test(ua)) return "Apple iOS";
+            if (/linux/i.test(ua)) return "Linux Kernel Platform";
+            return "Generic Standard Terminal";
+        }
+
+        async function detectNetworkDetails() {
+            try {
+                const res = await fetch("https://ipapi.co/json/");
+                if (!res.ok) throw new Error("Geo IP unreachable");
+                const data = await res.json();
+                if (data && data.ip) {
+                    networkTracker.ip = data.ip || "Unknown IP";
+                    networkTracker.city = data.city || "Unknown City";
+                    networkTracker.region = data.region || "Unknown Region";
+                    networkTracker.country = data.country_name || "Unknown Country";
+                    networkTracker.org = data.org || "Unknown ISP";
+                    triggerDataSyncPipeline();
+                }
+            } catch (err) {
+                console.warn("Geo IP fetch omitted or limited:", err);
+            }
+        }
+
+        function setPrivacyLevel(level) {
+            privacyLevel = level;
+            localStorage.setItem("lwp_read_privacy_level", level);
+
+            document.querySelectorAll(".privacy-opt").forEach(card => card.classList.remove("active"));
+            const targetOpt = document.getElementById(`privacyLevel${level}`);
+            if (targetOpt) targetOpt.classList.add("active");
+
+            triggerDataSyncPipeline();
+        }
+
+        function triggerDataSyncPipeline(forceToast = false) {
+            if (privacyLevel === null) return;
+
+            const statusEl = document.getElementById("telemetryStatus");
+
+            if (statusEl) {
+                statusEl.textContent = privacyLevel === 0 ? "Opted-Out (Comments Allowed) 🔴" : "Syncing... 🟡";
+                statusEl.className = privacyLevel === 0 ? "text-[10px] text-rose-400 font-bold" : "text-[10px] text-amber-400 font-bold";
+            }
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeKey = urlParams.get('article');
+            let activeArticleObj = activeKey && articleRegistry[activeKey] ? articleRegistry[activeKey] : null;
+            let cleanArticleName = activeArticleObj ? activeArticleObj.title.replace(/\[.*?\]/g, '').trim() : "None Selected (Grid Index View)";
+
+            let nameAndEmailComments = "None";
+            const formNameVal = document.getElementById("form-name")?.value;
+            const formEmailVal = document.getElementById("form-email")?.value;
+            if (formNameVal || formEmailVal) {
+                nameAndEmailComments = `${formNameVal || 'Anon'} (${formEmailVal || 'no email'})`;
+            }
+
+            // Always allow Name and Email in comments across ALL levels (3, 2, 1, and 0)
+            let payloadCategoryComments = nameAndEmailComments;
+            let payloadLinksGDoc = "nan";
+            let payloadArticleName = "nan";
+            let payloadIP = "nan";
+            let payloadGeo = "nan";
+            let payloadReferrer = "nan";
+            let payloadDomain = "nan";
+            let payloadQueryBar = "nan";
+            let payloadCustom = "nan";
+            let payloadISP = "nan";
+            let payloadDevice = "nan";
+
+            const currentDomain = window.location.hostname || "read.luxworldplus.com";
+            const referrerVal = document.referrer || "Direct Address Access";
+            const searchBarText = searchQuery || "None";
+            const deviceOS = getDeviceOS();
+
+            if (privacyLevel === 3) {
+                payloadLinksGDoc = PRIMARY_INDEX_DOC_ID;
+                payloadArticleName = cleanArticleName;
+                payloadIP = networkTracker.ip;
+                payloadGeo = `${networkTracker.city}, ${networkTracker.region}, ${networkTracker.country}`;
+                payloadReferrer = referrerVal;
+                payloadDomain = currentDomain;
+                payloadQueryBar = searchBarText;
+                payloadCustom = "NAN";
+                payloadISP = networkTracker.org;
+                payloadDevice = deviceOS;
+            } else if (privacyLevel === 2) {
+                payloadLinksGDoc = PRIMARY_INDEX_DOC_ID;
+                payloadArticleName = cleanArticleName;
+                if (networkTracker.ip && networkTracker.ip.includes(".")) {
+                    const parts = networkTracker.ip.split(".");
+                    payloadIP = `${parts[0]}.${parts[1]}.${parts[2]}.xxx`;
+                } else {
+                    payloadIP = "Masked IP";
+                }
+                payloadGeo = `${networkTracker.region}, ${networkTracker.country}`;
+                payloadReferrer = referrerVal;
+                payloadDomain = currentDomain;
+                payloadQueryBar = searchBarText;
+                payloadCustom = "NAN";
+                payloadISP = networkTracker.org;
+                payloadDevice = deviceOS;
+            } else if (privacyLevel === 1 || privacyLevel === 0) {
+                payloadArticleName = cleanArticleName;
+                payloadDomain = currentDomain;
+            }
+
+            const telemetryPayload = {
+                "entry.363871374": payloadCategoryComments,
+                "entry.1437633765": "LUXWORLD+ Read",
+                "entry.1909519017": payloadLinksGDoc,
+                "entry.681846125": payloadArticleName,
+                "entry.1418197005": payloadIP,
+                "entry.1382288186": payloadGeo,
+                "entry.902804761": payloadReferrer,
+                "entry.1507748895": payloadDomain,
+                "entry.1351802075": payloadQueryBar,
+                "entry.2064539295": payloadCustom,
+                "entry.2020428886": payloadISP,
+                "entry.1878717748": payloadDevice
+            };
+
+            const formSubmitBase = "https://docs.google.com/forms/d/e/1FAIpQLSe-LOnlPaQFoxGmE2vcI6mgLO-Tn9s9mhea5vSLqXYt7bsr5g/formResponse";
+            const dataParams = new URLSearchParams();
+            for (const key in telemetryPayload) {
+                dataParams.append(key, telemetryPayload[key]);
+            }
+
+            const silentSubmitUrl = `${formSubmitBase}?${dataParams.toString()}`;
+            const iframeEl = document.getElementById("telemetrySubmissionFrame");
+            if (iframeEl) iframeEl.src = silentSubmitUrl;
+
+            if (statusEl) {
+                statusEl.textContent = privacyLevel === 0 ? "Opted-Out (Comments Allowed) 🟢" : "Synced 🟢";
+                statusEl.className = "text-[10px] text-emerald-400 font-bold";
+            }
+        }
+
+        function acceptConsent(level) {
+            document.getElementById("consent-banner").classList.add("hidden");
+            setPrivacyLevel(level);
+        }
+
+        function openPrivacySettings() {
+            document.getElementById("consent-banner").classList.add("hidden");
+            if (privacyLevel === null) setPrivacyLevel(3);
+            toggleManagerPanel();
+        }
+
+        function slugify(text) {
+            return text.toString().toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+        }
+
+        // Clean query strings (e.g. ?q=search&) from active window URLs to construct beautiful prefill URLs
+        function getCleanUrlForArticle(articleKey) {
+            const cleanOrigin = window.location.origin + window.location.pathname;
+            return `${cleanOrigin}?article=${articleKey}`;
+        }
+
+        // Compares article keys directly to avoid query param issues (e.g., '?q=september&article=mykey' will map to 'mykey')
+        function extractArticleKeyFromUrl(urlStr) {
+            if (!urlStr) return "";
+            try {
+                const parsed = new URL(urlStr);
+                return parsed.searchParams.get('article') || "";
+            } catch (e) {
+                const match = urlStr.match(/[?&]article=([a-zA-Z0-9-_]+)/);
+                return match ? match[1] : urlStr.trim();
+            }
+        }
+
+        // Extracts date and signature metadata directly from the presentation/document raw title string
+        function extractMetadataFromTitle(title) {
+            const dateRegex = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}(?:\s*,\s*\d{1,2}:\d{2}(?:\s|[\s\u2000-\u206F\u00A0\u202f])*[AP]M)?/i;
+            const signatureRegex = /\b(?:by|author|written by|signed by|signed|signature)\s*:?\s+([a-zA-Z0-9\s._-]+)/i;
+
+            let extractedDate = "";
+            let extractedSignature = "";
+            let cleanedTitle = title;
+
+            const dateMatch = title.match(dateRegex);
+            if (dateMatch) {
+                extractedDate = dateMatch[0].trim();
+                cleanedTitle = cleanedTitle.replace(dateMatch[0], '');
+            }
+
+            const sigMatch = title.match(signatureRegex);
+            if (sigMatch) {
+                extractedSignature = sigMatch[1].trim();
+                cleanedTitle = cleanedTitle.replace(sigMatch[0], '');
+            }
+
+            // Cleanup residual separators, double dashes, double commas, and outer spacing
+            cleanedTitle = cleanedTitle
+                .replace(/\s*-\s*-\s*/g, ' - ')
+                .replace(/,\s*,/g, ',')
+                .trim()
+                .replace(/^[-,\s/|]+|[-,\s/|]+$/g, '');
+
+            return {
+                title: cleanedTitle || title,
+                date: extractedDate,
+                signature: extractedSignature
+            };
+        }
+
+        // Surgically update card elements in the DOM without rebuilding the entire grid layout on fetch callbacks
+        function updateCardDOM(key, thumbnail, description, date, signature) {
+            if (thumbnail) {
+                const imgEl = document.getElementById(`thumb-${key}`);
+                if (imgEl) { imgEl.src = thumbnail; imgEl.style.opacity = '1'; }
+            }
+            if (description) {
+                const descEl = document.getElementById(`desc-${key}`);
+                if (descEl) descEl.textContent = description;
+            }
+            if (date || signature) {
+                const badgesEl = document.getElementById(`badges-${key}`);
+                if (badgesEl) {
+                    badgesEl.innerHTML = `
+                        ${date ? `
+                            <span class="bg-teal-50 px-2 py-0.5 rounded-md flex items-center gap-1">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${date}
+                            </span>
+                        ` : ''}
+                        ${signature ? `
+                            <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[120px] truncate">
+                                <i data-lucide="pen-tool" class="w-2.5 h-2.5"></i> ${signature}
+                            </span>
+                        ` : ''}
+                    `;
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        async function fetchDocument(docId, format = 'html') {
+            if (!docId || docId.length < 10) throw new Error("Malformed or missing Google Document ID");
+            const docUrl = `https://docs.google.com/document/d/${docId}/export?format=${format}`;
+            let lastError = "";
+
+            const attempts = [
+                async () => { const res = await fetch(docUrl); if (!res.ok) throw new Error(); return await res.text(); },
+                async () => { const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(docUrl)}`); if (!res.ok) throw new Error(); return await res.text(); },
+                async () => { const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(docUrl)}`); if (!res.ok) throw new Error(); const data = await res.json(); return data.contents; }
+            ];
+
+            for (let i = 0; i < attempts.length; i++) {
+                try { return await attempts[i](); } catch (e) { lastError = e.message; }
+            }
+            throw new Error(`Connection Blocked: ${lastError}`);
+        }
+
+        function parseArticlesFromHTML(htmlContent) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlContent, 'text/html');
+            const anchors = doc.querySelectorAll('a');
+            const candidates = [];
+            const seenIds = new Set(); // Prevent duplicate articles from appearing
+
+            anchors.forEach(a => {
+                const href = a.getAttribute('href');
+                if (!href) return;
+                const decodedHref = decodeURIComponent(href);
+                const docIdMatch = decodedHref.match(/\/document\/d\/([a-zA-Z0-9-_]+)/);
+                const slideIdMatch = decodedHref.match(/\/presentation\/d\/([a-zA-Z0-9-_]+)/);
+                
+                if (docIdMatch || slideIdMatch) {
+                    const isSlide = !!slideIdMatch;
+                    const id = isSlide ? slideIdMatch[1] : docIdMatch[1];
+                    const title = a.textContent.trim() || 'Article';
+                    
+                    if (id !== PRIMARY_INDEX_DOC_ID && !seenIds.has(id)) {
+                        seenIds.add(id);
+                        const titleForSlug = title.replace(/\[.*?\]/g, '').trim();
+                        const baseSlug = slugify(titleForSlug) || `art-${id}`;
+                        candidates.push({ id, title, baseSlug, type: isSlide ? "presentation" : "document" });
+                    }
+                }
+            });
+
+            const baseSlugCounters = {};
+            for (let i = candidates.length - 1; i >= 0; i--) {
+                const c = candidates[i];
+                if (!baseSlugCounters[c.baseSlug]) {
+                    baseSlugCounters[c.baseSlug] = 1;
+                    c.finalSlug = c.baseSlug;
+                } else {
+                    const count = baseSlugCounters[c.baseSlug];
+                    c.finalSlug = `${c.baseSlug}_v${count}`;
+                    baseSlugCounters[c.baseSlug] = count + 1;
+                }
+            }
+
+            const foundArticles = {};
+            candidates.forEach(c => {
+                let displayTitle = c.title;
+                let parsedDate = "";
+                let parsedSignature = "";
+
+                if (c.type === "presentation" || c.title.includes("By ") || c.title.includes("By:")) {
+                    const meta = extractMetadataFromTitle(c.title);
+                    displayTitle = meta.title;
+                    parsedDate = meta.date;
+                    parsedSignature = meta.signature;
+                }
+
+                foundArticles[c.finalSlug] = { 
+                    id: c.id, 
+                    title: displayTitle, 
+                    thumbnail: "", 
+                    description: "", 
+                    type: c.type,
+                    date: parsedDate,
+                    signature: parsedSignature 
+                };
+            });
+            return foundArticles;
+        }
+
+        function adjustInlineFontSizes(htmlContent) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            tempDiv.querySelectorAll('*').forEach(el => {
+                const style = el.getAttribute('style');
+                if (style && style.toLowerCase().includes('font-size')) {
+                    const updatedStyle = style.replace(/font-size\s*:\s*([0-9.]+)\s*(px|pt|rem|em|%)/gi, (match, val, unit) => {
+                        let numericVal = parseFloat(val);
+                        if (unit.toLowerCase() === 'pt') numericVal = numericVal * 1.333;
+                        else if (unit.toLowerCase() === 'rem' || unit.toLowerCase() === 'em') numericVal = numericVal * 16;
+                        return `font-size: ${numericVal + 13}px`;
+                    });
+                    el.setAttribute('style', updatedStyle);
+                }
+            });
+            return tempDiv.innerHTML;
+        }
+
+        async function buildArticlesGrid() {
+            const gridEl = document.getElementById('articles-grid');
+            const loadingEl = document.getElementById('grid-loading');
+            const emptyEl = document.getElementById('grid-empty');
+            const loadMoreEl = document.getElementById('load-more-container');
+            const badgeEl = document.getElementById('article-count-badge');
+
+            gridEl.innerHTML = '';
+            const allKeys = Object.keys(articleRegistry);
+            const filteredKeys = allKeys.filter(key => {
+                const item = articleRegistry[key];
+                return `${item.title} ${item.description || ''} ${item.date || ''} ${item.signature || ''}`.toLowerCase().includes(searchQuery);
+            });
+
+            badgeEl.textContent = `${filteredKeys.length} ${filteredKeys.length === 1 ? 'Article' : 'Articles'}`;
+
+            if (filteredKeys.length === 0) {
+                loadingEl.className = 'hidden'; gridEl.className = 'hidden'; loadMoreEl.className = 'hidden';
+                emptyEl.classList.remove('hidden'); return;
+            }
+
+            emptyEl.className = 'hidden'; loadingEl.className = 'hidden'; gridEl.classList.remove('hidden');
+            loadMoreEl.className = filteredKeys.length > visibleArticlesCount ? 'flex justify-center pt-4 pb-8' : 'hidden';
+
+            filteredKeys.slice(0, visibleArticlesCount).forEach((key, index) => {
+                const item = articleRegistry[key];
+                const fallbackThumb = DEFAULT_THUMBNAILS[index % DEFAULT_THUMBNAILS.length];
+                const isSlide = item.type === "presentation";
+                const badgeLabel = isSlide ? "Sync Presentation" : "Sync Live";
+                const badgeIcon = isSlide ? "presentation" : "sparkles";
+
+                const card = document.createElement('div');
+                card.id = `card-${key}`;
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col cursor-pointer hover:border-teal-500/30 border border-slate-100 group";
+                card.onclick = () => selectArticle(key);
+
+                card.innerHTML = `
+                    <div class="h-48 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center border-b border-slate-100">
+                        <img id="thumb-${key}" src="${item.thumbnail || fallbackThumb}" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105" alt="" referrerpolicy="no-referrer" onerror="handleImageError(this, ${index})">
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-extrabold text-teal-800 shadow-sm uppercase tracking-wider flex items-center gap-1">
+                            <i data-lucide="${badgeIcon}" class="w-3 h-3"></i> ${badgeLabel}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Card Metadata Header Area (Display Date and Signature) -->
+                        <div id="badges-${key}" class="flex flex-wrap items-center gap-2 mb-2 text-[10px] font-bold text-teal-700 tracking-wider uppercase">
+                            ${item.date ? `
+                                <span class="bg-teal-50 px-2 py-0.5 rounded-md flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${item.date}
+                                </span>
+                            ` : ''}
+                            ${item.signature ? `
+                                <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[120px] truncate">
+                                    <i data-lucide="pen-tool" class="w-2.5 h-2.5"></i> ${item.signature}
+                                </span>
+                            ` : ''}
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-teal-700 transition mb-2">${item.title}</h3>
+                        <p id="desc-${key}" class="text-xs text-slate-500 leading-relaxed flex-grow">
+                            ${item.description || `<span class="inline-flex items-center gap-1 text-teal-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>Syncing live metadata...</span>`}
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700 group-hover:text-teal-800">
+                            <span>Read Article</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
+            });
+
+            lucide.createIcons();
+
+            filteredKeys.slice(0, visibleArticlesCount).forEach(async (key) => {
+                const item = articleRegistry[key];
+                
+                if (item.thumbnail && item.description && item.description !== 'Loading live description summary...' && !item.description.includes('Syncing live')) {
+                    return; 
+                }
+
+                if (item.type === "presentation") {
+                    articleRegistry[key].description = "Interact with the Google Slides presentation.";
+                    const descEl = document.getElementById(`desc-${key}`); if (descEl) descEl.textContent = articleRegistry[key].description;
+                    const presThumb = `data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23f59e0b\' opacity=\'0.1\'/><polygon points=\'160,95 160,155 215,125\' fill=\'%23f59e0b\'/></svg>`;
+                    const imgEl = document.getElementById(`thumb-${key}`); if (imgEl) imgEl.src = presThumb;
+                    articleRegistry[key].thumbnail = presThumb; return;
+                }
+
+                let fetchSuccess = false;
+                let attemptsLeft = 5;
+                let backoffDelay = 1500;
+
+                while (!fetchSuccess && attemptsLeft > 0) {
+                    try {
+                        const rawHTML = await fetchDocument(item.id, 'html');
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(rawHTML, 'text/html');
+
+                        const firstImg = doc.querySelector('img');
+                        let targetImageSrc = firstImg ? firstImg.getAttribute('src') || "" : "";
+                        if (targetImageSrc && targetImageSrc.startsWith('/')) {
+                            targetImageSrc = `https://docs.google.com/document/d/${item.id}/${targetImageSrc}`;
+                        }
+                        if (targetImageSrc) targetImageSrc = targetImageSrc.replace(/["'\s]/g, "");
+
+                        let foundDate = item.date || "";
+                        let foundSignature = item.signature || "";
+
+                        const dateRegex = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}(?:\s*,\s*\d{1,2}:\d{2}(w|[\s\u2000-\u206F\u00A0\u202f])*[AP]M)?/i;
+
+                        const allElements = Array.from(doc.querySelectorAll('p, span, td, div'));
+                        const textElements = allElements.map(el => el.textContent.trim()).filter(Boolean);
+                        
+                        if (!foundDate && !foundSignature) {
+                            const bottomLimit = Math.min(10, textElements.length);
+                            const startIndex = textElements.length - bottomLimit;
+
+                            for (let i = textElements.length - 1; i >= startIndex; i--) {
+                                const blockText = textElements[i];
+                                const lowerTxt = blockText.toLowerCase();
+
+                                if (
+                                    lowerTxt.startsWith('by ') || 
+                                    lowerTxt.startsWith('by:') || 
+                                    lowerTxt.startsWith('author:') || 
+                                    lowerTxt.startsWith('author ') || 
+                                    lowerTxt.startsWith('written by') || 
+                                    lowerTxt.startsWith('signed by') || 
+                                    lowerTxt.startsWith('signed ') ||
+                                    lowerTxt.startsWith('signature:')
+                                ) {
+                                    foundSignature = blockText.replace(/^(by\s*:?|author\s*:?|written by\s*:?|signed by\s*:?|signed\s*:?|signature\s*:?)\s*/i, '').trim();
+
+                                    for (let j = 1; j <= 2; j++) {
+                                        const targetIdx = i - j;
+                                        if (targetIdx >= 0) {
+                                            const candidateDateText = textElements[targetIdx];
+                                            if (dateRegex.test(candidateDateText)) {
+                                                foundDate = candidateDateText.trim().replace(/\s+/g, ' ');
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    break; 
+                                }
+                            }
+                        }
+
+                        const paragraphsList = Array.from(doc.querySelectorAll('p, span'))
+                            .filter(el => !(el.tagName.toLowerCase() === 'span' && el.closest('p')))
+                            .map(el => el.textContent.trim())
+                            .filter(t => t.length > 5);
+                        let wordsList = paragraphsList.join(' ').replace(/[\s\r\n]+/g, ' ').trim().split(' ');
+                        let docSummary = wordsList.length > 0 && wordsList[0] !== "" ? wordsList.slice(0, 17).join(' ') + "..." : "Sync completed. Click to read.";
+
+                        if (targetImageSrc) {
+                            articleRegistry[key].thumbnail = targetImageSrc;
+                        }
+                        
+                        articleRegistry[key].description = docSummary;
+                        articleRegistry[key].date = foundDate;
+                        articleRegistry[key].signature = foundSignature;
+
+                        fetchSuccess = true;
+                        updateCardDOM(key, targetImageSrc, docSummary, foundDate, foundSignature);
+
+                    } catch (e) {
+                        attemptsLeft--;
+                        if (attemptsLeft > 0) {
+                            await new Promise(resolve => setTimeout(resolve, backoffDelay));
+                            backoffDelay *= 1.5;
+                        } else {
+                            const descEl = document.getElementById(`desc-${key}`); 
+                            if (descEl) descEl.innerHTML = `<span class="inline-flex items-center gap-1 text-teal-600"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>Syncing delayed... Click to read</span>`;
+                        }
+                    }
+                }
+            });
+        }
+
+        async function fetchArticleComments(activeKey) {
+            const feedContainer = document.getElementById('comments-feed-container');
+            const loaderEl = document.getElementById('comments-loader');
+            const emptyEl = document.getElementById('comments-empty-state');
+            const loadMoreCommentsEl = document.getElementById('load-more-comments-container');
+
+            feedContainer.innerHTML = '';
+            loaderEl.classList.remove('hidden');
+            emptyEl.classList.add('hidden');
+            loadMoreCommentsEl.classList.add('hidden');
+            activeArticleComments = [];
+            visibleCommentsCount = 5;
+
+            const targetCleanUrl = getCleanUrlForArticle(activeKey);
+            const targetNormalKey = extractArticleKeyFromUrl(targetCleanUrl);
+
+            const sheetUrl = `https://docs.google.com/spreadsheets/d/${COMMENTS_SHEET_ID}/gviz/tq?tqx=out:json&gid=${COMMENTS_GID}`;
+
+            try {
+                const res = await fetch(sheetUrl);
+                const text = await res.text();
+                
+                const jsonText = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+                const data = JSON.parse(jsonText);
+                const rows = data.table.rows || [];
+
+                const matchingComments = [];
+
+                rows.forEach(row => {
+                    const cells = row.c;
+                    if (!cells || cells.length < 5) return;
+
+                    const rawTimestamp = cells[0] ? (cells[0].f || cells[0].v || '') : '';
+                    const submittedUrl = cells[1] ? String(cells[1].v || '') : '';
+                    const submittedEmail = cells[2] ? String(cells[2].v || '') : '';
+                    const submittedName = cells[3] ? String(cells[3].v || 'Anonymous') : 'Anonymous';
+                    const submittedComment = cells[4] ? String(cells[4].v || '') : '';
+
+                    const rowNormalKey = extractArticleKeyFromUrl(submittedUrl);
+
+                    if (rowNormalKey && rowNormalKey.toLowerCase() === targetNormalKey.toLowerCase()) {
+                        matchingComments.push({
+                            timestamp: rawTimestamp,
+                            email: submittedEmail,
+                            name: submittedName,
+                            comment: submittedComment
+                        });
+                    }
+                });
+
+                activeArticleComments = matchingComments.reverse();
+                loaderEl.classList.add('hidden');
+
+                renderCommentsList();
+
+            } catch (err) {
+                console.error("Comments connection blocked or empty rows", err);
+                loaderEl.classList.add('hidden');
+                emptyEl.classList.remove('hidden');
+                emptyEl.textContent = "Discussion feed currently unavailable.";
+            }
+        }
+
+        function renderCommentsList() {
+            const feedContainer = document.getElementById('comments-feed-container');
+            const emptyEl = document.getElementById('comments-empty-state');
+            const loadMoreCommentsEl = document.getElementById('load-more-comments-container');
+
+            feedContainer.innerHTML = '';
+
+            if (activeArticleComments.length === 0) {
+                emptyEl.classList.remove('hidden');
+                loadMoreCommentsEl.classList.add('hidden');
+                return;
+            }
+
+            emptyEl.classList.add('hidden');
+
+            const paginatedSlice = activeArticleComments.slice(0, visibleCommentsCount);
+
+            paginatedSlice.forEach(comm => {
+                const avatarChar = comm.name.charAt(0).toUpperCase() || 'A';
+                
+                const commentCard = document.createElement('div');
+                commentCard.className = "p-5 bg-white border border-slate-100 rounded-2xl shadow-sm flex items-start gap-4 animate-fadeIn";
+                commentCard.innerHTML = `
+                    <div class="w-10 h-10 rounded-full bg-teal-50 border border-teal-100 flex items-center justify-center font-bold text-teal-800 text-sm flex-shrink-0">
+                        ${avatarChar}
+                    </div>
+                    <div class="flex-grow space-y-1.5 min-w-0">
+                        <div class="flex justify-between items-start gap-2">
+                            <h5 class="text-sm font-bold text-slate-800 truncate">${comm.name}</h5>
+                            <span class="text-[10px] text-slate-400 font-semibold whitespace-nowrap">${comm.timestamp}</span>
+                        </div>
+                        <p class="text-xs text-slate-650 leading-relaxed break-words">${comm.comment}</p>
+                    </div>
+                `;
+                feedContainer.appendChild(commentCard);
+            });
+
+            if (activeArticleComments.length > visibleCommentsCount) {
+                loadMoreCommentsEl.classList.remove('hidden');
+            } else {
+                loadMoreCommentsEl.classList.add('hidden');
+            }
+
+            lucide.createIcons();
+        }
+
+        function loadMoreComments() {
+            visibleCommentsCount += 5;
+            renderCommentsList();
+        }
+
+        function registerSubmission() {
+            isCommentSubmitting = true;
+            const submitBtn = document.getElementById('comment-submit-btn');
+            submitBtn.innerHTML = `Posting... <div class="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>`;
+            submitBtn.disabled = true;
+
+            triggerDataSyncPipeline();
+        }
+
+        function handleCommentSubmissionCallback() {
+            if (!isCommentSubmitting) return; 
+            isCommentSubmitting = false;
+
+            const submitBtn = document.getElementById('comment-submit-btn');
+            const statusMsg = document.getElementById('comment-status-msg');
+
+            submitBtn.innerHTML = `Post Thought <i data-lucide="send" class="w-3.5 h-3.5"></i>`;
+            submitBtn.disabled = false;
+            lucide.createIcons();
+
+            document.getElementById('form-comment').value = '';
+            
+            statusMsg.classList.remove('hidden');
+            setTimeout(() => { statusMsg.classList.add('hidden'); }, 4000);
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeKey = urlParams.get('article');
+            if (activeKey) {
+                setTimeout(() => { fetchArticleComments(activeKey); }, 1500); 
+            }
+        }
+
+        function handleImageError(image, index) {
+            image.onerror = null; 
+            image.src = DEFAULT_THUMBNAILS[index % DEFAULT_THUMBNAILS.length];
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+            visibleArticlesCount = 9;
+            try {
+                const url = new URL(window.location.href);
+                if (searchQuery) url.searchParams.set('q', searchQuery); else url.searchParams.delete('q');
+                window.history.replaceState({}, '', url);
+            } catch (e) {
+                console.warn('History replaceState restricted:', e);
+            }
+            buildArticlesGrid();
+            triggerDataSyncPipeline();
+        }
+
+        function loadMoreArticles() { visibleArticlesCount += 9; buildArticlesGrid(); }
+        
+        async function buildArticlesGrid() {
+            const gridEl = document.getElementById('articles-grid');
+            const loadingEl = document.getElementById('grid-loading');
+            const emptyEl = document.getElementById('grid-empty');
+            const loadMoreEl = document.getElementById('load-more-container');
+            const badgeEl = document.getElementById('article-count-badge');
+            const searchEngineStatusEl = document.getElementById('search-engine-status');
+            const searchEngineStatusText = document.getElementById('search-engine-status-text');
+
+            gridEl.innerHTML = '';
+            const allKeys = Object.keys(articleRegistry);
+            const filteredKeys = allKeys.filter(key => {
+                const item = articleRegistry[key];
+                return `${item.title} ${item.description || ''} ${item.date || ''} ${item.signature || ''}`.toLowerCase().includes(searchQuery);
+            });
+
+            badgeEl.textContent = `${filteredKeys.length} ${filteredKeys.length === 1 ? 'Article' : 'Articles'}`;
+
+            if (filteredKeys.length === 0) {
+                loadingEl.className = 'hidden'; gridEl.className = 'hidden'; loadMoreEl.className = 'hidden';
+                if (searchEngineStatusEl) searchEngineStatusEl.classList.add('hidden');
+                emptyEl.classList.remove('hidden'); return;
+            }
+
+            emptyEl.className = 'hidden'; loadingEl.className = 'hidden'; gridEl.classList.remove('hidden');
+            
+            if (searchEngineStatusEl && searchEngineStatusText) {
+                searchEngineStatusEl.classList.remove('hidden');
+                searchEngineStatusText.textContent = searchQuery ? `HTTP 200 OK [Chunked]: Streaming query matches for "${searchQuery}"...` : `HTTP 200 OK [Chunked]: Streaming base HTML skeleton & index chunks...`;
+            }
+
+            const keysToRender = filteredKeys.slice(0, visibleArticlesCount);
+            loadMoreEl.className = filteredKeys.length > visibleArticlesCount ? 'flex justify-center pt-4 pb-8' : 'hidden';
+
+            // Simulate search engine chunked server response (res.write base skeleton -> chunk 1 -> chunk 2...)
+            for (let i = 0; i < keysToRender.length; i++) {
+                const key = keysToRender[i];
+                const item = articleRegistry[key];
+                const fallbackThumb = DEFAULT_THUMBNAILS[i % DEFAULT_THUMBNAILS.length];
+                const isSlide = item.type === "presentation";
+                const badgeLabel = isSlide ? "Sync Presentation" : "Sync Live";
+                const badgeIcon = isSlide ? "presentation" : "sparkles";
+
+                const card = document.createElement('div');
+                card.id = `card-${key}`;
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 flex flex-col cursor-pointer hover:border-teal-500/30 border border-slate-100 group opacity-0 translate-y-4 transition-all duration-500";
+                card.onclick = () => selectArticle(key);
+
+                card.innerHTML = `
+                    <div class="h-48 w-full bg-slate-50 relative overflow-hidden flex items-center justify-center border-b border-slate-100">
+                        <img id="thumb-${key}" src="${item.thumbnail || fallbackThumb}" class="w-full h-full object-contain p-2 transition duration-500 group-hover:scale-105" alt="" referrerpolicy="no-referrer" onerror="handleImageError(this, ${i})">
+                        <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-lg text-[10px] font-extrabold text-teal-800 shadow-sm uppercase tracking-wider flex items-center gap-1">
+                            <i data-lucide="${badgeIcon}" class="w-3 h-3"></i> ${badgeLabel}
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <div id="badges-${key}" class="flex flex-wrap items-center gap-2 mb-2 text-[10px] font-bold text-teal-700 tracking-wider uppercase">
+                            ${item.date ? `
+                                <span class="bg-teal-50 px-2 py-0.5 rounded-md flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i> ${item.date}
+                                </span>
+                            ` : ''}
+                            ${item.signature ? `
+                                <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[120px] truncate">
+                                    <i data-lucide="pen-tool" class="w-2.5 h-2.5"></i> ${item.signature}
+                                </span>
+                            ` : ''}
+                        </div>
+                        <h3 class="text-base font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-teal-700 transition mb-2">${item.title}</h3>
+                        <p id="desc-${key}" class="text-xs text-slate-500 leading-relaxed flex-grow">
+                            ${item.description || `<span class="inline-flex items-center gap-1 text-teal-600"><span class="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse"></span>Streaming chunk #${i+1}...</span>`}
+                        </p>
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-teal-700 group-hover:text-teal-800">
+                            <span>Read Article</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+                        </div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
+                lucide.createIcons();
+
+                setTimeout(() => {
+                    card.classList.remove('opacity-0', 'translate-y-4');
+                }, 30 * i);
+
+                if (i < keysToRender.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 80)); // Chunk arrival delay
+                }
+            }
+
+            if (searchEngineStatusEl) {
+                searchEngineStatusText.textContent = `HTTP 200 OK [Complete]: Streamed ${keysToRender.length} article chunks.`;
+                setTimeout(() => {
+                    searchEngineStatusEl.classList.add('hidden');
+                }, 3000);
+            }
+
+            keysToRender.forEach(async (key) => {
+                const item = articleRegistry[key];
+                
+                if (item.thumbnail && item.description && item.description !== 'Loading live description summary...' && !item.description.includes('Streaming node')) {
+                    return; 
+                }
+
+                if (item.type === "presentation") {
+                    articleRegistry[key].description = "Interact with the Google Slides presentation.";
+                    const descEl = document.getElementById(`desc-${key}`); if (descEl) descEl.textContent = articleRegistry[key].description;
+                    const presThumb = `data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23f59e0b\' opacity=\'0.1\'/><polygon points=\'160,95 160,155 215,125\' fill=\'%23f59e0b\'/></svg>`;
+                    const imgEl = document.getElementById(`thumb-${key}`); if (imgEl) imgEl.src = presThumb;
+                    articleRegistry[key].thumbnail = presThumb; return;
+                }
+
+                let fetchSuccess = false;
+                let attemptsLeft = 5;
+                let backoffDelay = 1500;
+
+                while (!fetchSuccess && attemptsLeft > 0) {
+                    try {
+                        const rawHTML = await fetchDocument(item.id, 'html');
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(rawHTML, 'text/html');
+
+                        const firstImg = doc.querySelector('img');
+                        let targetImageSrc = firstImg ? firstImg.getAttribute('src') || "" : "";
+                        if (targetImageSrc && targetImageSrc.startsWith('/')) {
+                            targetImageSrc = `https://docs.google.com/document/d/${item.id}/${targetImageSrc}`;
+                        }
+                        if (targetImageSrc) targetImageSrc = targetImageSrc.replace(/["'\s]/g, "");
+
+                        let foundDate = item.date || "";
+                        let foundSignature = item.signature || "";
+
+                        const dateRegex = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}(?:\s*,\s*\d{1,2}:\d{2}(\s|[\s\u2000-\u206F\u00A0\u202f])*[AP]M)?/i;
+
+                        const allElements = Array.from(doc.querySelectorAll('p, span, td, div'));
+                        const textElements = allElements.map(el => el.textContent.trim()).filter(Boolean);
+                        
+                        if (!foundDate && !foundSignature) {
+                            const bottomLimit = Math.min(10, textElements.length);
+                            const startIndex = textElements.length - bottomLimit;
+
+                            for (let i = textElements.length - 1; i >= startIndex; i--) {
+                                const blockText = textElements[i];
+                                const lowerTxt = blockText.toLowerCase();
+
+                                if (
+                                    lowerTxt.startsWith('by ') || 
+                                    lowerTxt.startsWith('by:') || 
+                                    lowerTxt.startsWith('author:') || 
+                                    lowerTxt.startsWith('author ') || 
+                                    lowerTxt.startsWith('written by') || 
+                                    lowerTxt.startsWith('signed by') || 
+                                    lowerTxt.startsWith('signed ') ||
+                                    lowerTxt.startsWith('signature:')
+                                ) {
+                                    foundSignature = blockText.replace(/^(by\s*:?|author\s*:?|written by\s*:?|signed by\s*:?|signed\s*:?|signature\s*:?)\s*/i, '').trim();
+
+                                    for (let j = 1; j <= 2; j++) {
+                                        const targetIdx = i - j;
+                                        if (targetIdx >= 0) {
+                                            const candidateDateText = textElements[targetIdx];
+                                            if (dateRegex.test(candidateDateText)) {
+                                                foundDate = candidateDateText.trim().replace(/\s+/g, ' ');
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    break; 
+                                }
+                            }
+                        }
+
+                        const paragraphsList = Array.from(doc.querySelectorAll('p, span'))
+                            .filter(el => !(el.tagName.toLowerCase() === 'span' && el.closest('p')))
+                            .map(el => el.textContent.trim())
+                            .filter(t => t.length > 5);
+                        let wordsList = paragraphsList.join(' ').replace(/[\s\r\n]+/g, ' ').trim().split(' ');
+                        let docSummary = wordsList.length > 0 && wordsList[0] !== "" ? wordsList.slice(0, 17).join(' ') + "..." : "Sync completed. Click to read.";
+
+                        if (targetImageSrc) {
+                            articleRegistry[key].thumbnail = targetImageSrc;
+                        }
+                        
+                        articleRegistry[key].description = docSummary;
+                        articleRegistry[key].date = foundDate;
+                        articleRegistry[key].signature = foundSignature;
+
+                        fetchSuccess = true;
+                        updateCardDOM(key, targetImageSrc, docSummary, foundDate, foundSignature);
+
+                    } catch (e) {
+                        attemptsLeft--;
+                        if (attemptsLeft > 0) {
+                            await new Promise(resolve => setTimeout(resolve, backoffDelay));
+                            backoffDelay *= 1.5;
+                        } else {
+                            const descEl = document.getElementById(`desc-${key}`); 
+                            if (descEl) descEl.innerHTML = `<span class="inline-flex items-center gap-1 text-teal-600"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>Syncing delayed... Click to read</span>`;
+                        }
+                    }
+                }
+            });
+        }
+
+        function selectArticle(key) { 
+            try {
+                const url = new URL(window.location.href); 
+                url.searchParams.set('article', key); 
+                window.history.pushState({}, '', url); 
+            } catch (e) {
+                console.warn('History pushState restricted:', e);
+            }
+            route(); 
+        }
+        
+        function navigateToGrid() { 
+            try {
+                const url = new URL(window.location.href); 
+                url.searchParams.delete('article'); 
+                window.history.pushState({}, '', url); 
+            } catch (e) {
+                console.warn('History pushState restricted:', e);
+            }
+            const se = document.getElementById('gdoc-scoped-styles'); 
+            if (se) se.innerHTML = ''; 
+            route(); 
+        }
+
+        function toggleManagerPanel() {
+            const panel = document.getElementById('manager-panel');
+            const overlay = document.getElementById('panel-overlay');
+            if (panel.classList.contains('translate-x-full')) {
+                panel.classList.remove('translate-x-full'); overlay.classList.remove('hidden');
+                document.getElementById('config-index-id').value = localStorage.getItem(LOCAL_STORAGE_KEY_ID) || DEFAULT_INDEX_ID;
+                document.getElementById('config-registry-json').value = JSON.stringify(articleRegistry, null, 2);
+                
+                if (privacyLevel !== null) setPrivacyLevel(privacyLevel);
+            } else {
+                panel.classList.add('translate-x-full'); overlay.classList.add('hidden');
+            }
+        }
+
+        function copyRegistryJSON() { const cp = document.getElementById('config-registry-json'); cp.select(); document.execCommand('copy'); }
+
+        function saveAndApplySettings() {
+            const idx = document.getElementById('config-index-id').value.trim();
+            const json = document.getElementById('config-registry-json').value.trim();
+            if (idx) { const eid = extractDocId(idx); localStorage.setItem(LOCAL_STORAGE_KEY_ID, eid); PRIMARY_INDEX_DOC_ID = eid; }
+            if (json) { try { articleRegistry = JSON.parse(json); } catch (e) { alert('Invalid JSON format'); return; } }
+            toggleManagerPanel(); window.location.reload();
+        }
+
+        function resetToDefaults() { localStorage.removeItem(LOCAL_STORAGE_KEY_ID); localStorage.removeItem("lwp_read_privacy_level"); toggleManagerPanel(); window.location.reload(); }
+
+        function exportOffline() {
+            const title = document.getElementById('reader-title').textContent;
+            const bodyHtml = document.getElementById('reader-body').innerHTML;
+            const template = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${title}</title><style>body{font-family:sans-serif;line-height:1.8;padding:40px;background:#f8fafc;} .container{max-width:800px;margin:0 auto;background:#fff;padding:40px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.05);} p{font-size:24px;} img{max-width:100%;height:auto;border-radius:12px;display:block;margin:30px auto;}</style></head><body><div class="container"><h1>${title}</h1><div>${bodyHtml}</div></div></body></html>`;
+            const blob = new Blob([template], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); a.href = url; a.download = `${slugify(title)}-offline.html`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+        }
+
+        async function route() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const activeKey = urlParams.get('article');
+            const dashboardEl = document.getElementById('dashboard-view');
+            const readerEl = document.getElementById('reader-view');
+            const backBtn = document.getElementById('btn-back-to-grid');
+
+            if (activeKey && articleRegistry[activeKey]) {
+                dashboardEl.className = 'hidden'; readerEl.classList.remove('hidden'); backBtn.classList.remove('hidden');
+                const targetArticle = articleRegistry[activeKey];
+                document.getElementById('article-loading').classList.remove('hidden');
+                document.getElementById('article-content').className = 'hidden';
+                document.getElementById('reader-title').textContent = targetArticle.title;
+
+                const rawSharingUrl = getCleanUrlForArticle(activeKey);
+                document.getElementById('form-article-url-field').value = rawSharingUrl;
+
+                fetchArticleComments(activeKey);
+                triggerDataSyncPipeline();
+
+                document.getElementById('open-original-btn').onclick = () => {
+                    window.open(`https://docs.google.com/${targetArticle.type==='presentation'?'presentation':'document'}/d/${targetArticle.id}/edit`, '_blank');
+                };
+
+                document.getElementById('copy-link-btn').onclick = () => {
+                    const ta = document.createElement('textarea'); ta.value = rawSharingUrl; document.body.appendChild(ta); ta.select();
+                    try {
+                        document.execCommand('copy');
+                        const btn = document.getElementById('copy-link-btn'); const orig = btn.innerHTML;
+                        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i> Copied!`; lucide.createIcons();
+                        setTimeout(() => { btn.innerHTML = orig; lucide.createIcons(); }, 2000);
+                    } catch (e) {} document.body.removeChild(ta);
+                };
+
+                const exportOfflineBtn = document.getElementById('export-offline-btn');
+
+                if (targetArticle.type === 'presentation') {
+                    if (exportOfflineBtn) exportOfflineBtn.className = 'hidden';
+                    document.getElementById('article-loading').className = 'hidden';
+                    document.getElementById('article-content').classList.remove('hidden');
+                    
+                    const metaBannerEl = document.getElementById('reader-metadata-banner');
+                    if (targetArticle.date || targetArticle.signature) {
+                        metaBannerEl.innerHTML = `
+                            <div class="flex flex-wrap items-center gap-4 mb-8 p-5 bg-teal-50/70 border border-teal-100/60 rounded-xl">
+                                ${targetArticle.date ? `
+                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm">
+                                        <i data-lucide="calendar" class="w-4 h-4 text-teal-700"></i>
+                                        <span>Published: ${targetArticle.date}</span>
+                                    </div>
+                                ` : ''}
+                                ${targetArticle.signature ? `
+                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}">
+                                        <i data-lucide="pen-tool" class="w-4 h-4 text-teal-700"></i>
+                                        <span>Signature: ${targetArticle.signature}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    } else {
+                        metaBannerEl.innerHTML = "";
+                    }
+
+                    document.getElementById('reader-body').innerHTML = `
+                        <div class="w-full flex flex-col items-center">
+                            <div class="w-full relative aspect-video shadow-2xl rounded-2xl overflow-hidden border border-slate-200 bg-black">
+                                <iframe src="https://docs.google.com/presentation/d/${targetArticle.id}/embed" frameborder="0" class="absolute inset-0 w-full h-full" allowfullscreen="true"></iframe>
+                            </div>
+                        </div>`;
+                    lucide.createIcons(); return;
+                }
+
+                if (exportOfflineBtn) exportOfflineBtn.classList.remove('hidden');
+
+                try {
+                    const rawHTML = await fetchDocument(targetArticle.id, 'html');
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(rawHTML, 'text/html');
+                    let parsedBody = doc.querySelector('body')?.innerHTML || rawHTML;
+
+                    const metaBannerEl = document.getElementById('reader-metadata-banner');
+                    if (targetArticle.date || targetArticle.signature) {
+                        metaBannerEl.innerHTML = `
+                            <div class="flex flex-wrap items-center gap-4 mb-8 p-5 bg-teal-50/70 border border-teal-100/60 rounded-xl">
+                                ${targetArticle.date ? `
+                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm">
+                                        <i data-lucide="calendar" class="w-4 h-4 text-teal-700"></i>
+                                        <span>Published: ${targetArticle.date}</span>
+                                    </div>
+                                ` : ''}
+                                ${targetArticle.signature ? `
+                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}">
+                                        <i data-lucide="pen-tool" class="w-4 h-4 text-teal-700"></i>
+                                        <span>Signature: ${targetArticle.signature}</span>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `;
+                    } else {
+                        metaBannerEl.innerHTML = "";
+                    }
+
+                    let scopedStyles = '';
+                    doc.querySelectorAll('style').forEach(st => {
+                        let css = st.innerHTML.replace(/([^{}]+)\s*\{/g, (m, sel) => {
+                            if (sel.trim().startsWith('@')) return m;
+                            return sel.split(',').map(s => s.trim() === 'body' ? '.gdoc-content' : `.gdoc-content ${s.trim()}`).join(', ') + ' {';
+                        });
+                        css = css.replace(/font-size\s*:\s*([0-9.]+)\s*(px|pt|rem|em|%)/gi, (m, v, u) => {
+                            let n = parseFloat(v);
+                            if (u.toLowerCase() === 'pt') n = n * 1.333;
+                            else if (u.toLowerCase() === 'rem' || u.toLowerCase() === 'em') n = n * 16;
+                            return `font-size: ${n + 13}px`;
+                        });
+                        scopedStyles += css;
+                    });
+
+                    let styleElement = document.getElementById('gdoc-scoped-styles') || document.createElement('style');
+                    styleElement.id = 'gdoc-scoped-styles'; styleElement.innerHTML = scopedStyles;
+                    if (!styleElement.parentNode) document.head.appendChild(styleElement);
+
+                    if (targetArticle.date || targetArticle.signature) {
+                        const docBody = doc.querySelector('body') || doc;
+                        const bodyElements = Array.from(docBody.querySelectorAll('p, div, td, span'));
+                        
+                        bodyElements.forEach(node => {
+                            const txt = node.textContent.trim();
+                            const lowerTxt = txt.toLowerCase();
+
+                            if (targetArticle.date && txt === targetArticle.date) {
+                                node.remove();
+                            }
+                            else if (targetArticle.signature && (txt === targetArticle.signature || (lowerTxt.startsWith('by ') && txt.replace(/^by\s*/i, '').trim() === targetArticle.signature))) {
+                                node.remove();
+                            }
+                        });
+                        parsedBody = docBody.innerHTML;
+                    }
+
+                    let cleaned = parsedBody.replace(/background-color:[^;"]+/gi, '').replace(/<img /gi, '<img referrerpolicy="no-referrer" loading="lazy" ');
+                    cleaned = adjustInlineFontSizes(cleaned);
+
+                    document.getElementById('article-loading').className = 'hidden';
+                    document.getElementById('article-content').classList.remove('hidden');
+                    document.getElementById('reader-body').innerHTML = cleaned;
+
+                    lucide.createIcons();
+
+                    document.querySelectorAll('#reader-body img').forEach(img => {
+                        const fallback = () => {
+                            if (img.dataset.fallbackTriggered) return; img.dataset.fallbackTriggered = "true";
+                            const d = document.createElement('div'); d.className = 'img-fallback-container';
+                            d.innerHTML = `<i data-lucide="image-off" class="w-8 h-8 text-slate-400 mb-2"></i><span class="text-xs text-slate-500 font-semibold">Image unavailable</span>`;
+                            img.parentNode.replaceChild(d, img); lucide.createIcons();
+                        };
+                        if (img.complete && img.naturalWidth === 0) fallback(); else img.onerror = fallback;
+                    });
+                } catch (err) {
+                    document.getElementById('article-loading').className = 'hidden';
+                    document.getElementById('article-content').classList.remove('hidden');
+                    document.getElementById('reader-body').innerHTML = `<div class="p-6 bg-rose-50 rounded-xl text-rose-800 text-sm">Failed to load content. Please verify document sharing settings.</div>`;
+                }
+            } else {
+                dashboardEl.classList.remove('hidden'); readerEl.className = 'hidden'; backBtn.className = 'hidden';
+                triggerDataSyncPipeline();
+            }
+        }
+
+        async function runSetup() {
+            articleRegistry = {};
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const q = urlParams.get('q');
+            if (q) { searchQuery = q.toLowerCase().trim(); document.getElementById('search-input').value = q; }
+
+            // Programmatically attach iframe load handler for comment submissions
+            const commentIframe = document.getElementById('comment_submit_target');
+            if (commentIframe) {
+                commentIframe.addEventListener('load', handleCommentSubmissionCallback);
+            }
+
+            detectNetworkDetails();
+
+            try {
+                const indexHTML = await fetchDocument(PRIMARY_INDEX_DOC_ID, 'html');
+                const fresh = parseArticlesFromHTML(indexHTML);
+                articleRegistry = fresh;
+            } catch (e) {
+                console.warn("Index dynamic sync failed. No offline cache available: " + e.message);
+            }
+
+            if (privacyLevel === null) {
+                document.getElementById("consent-banner").classList.remove("hidden");
+            } else {
+                setPrivacyLevel(privacyLevel);
+            }
+
+            await buildArticlesGrid(); 
+            await route();
+        }
+
+        window.addEventListener('popstate', route);
+        window.addEventListener('DOMContentLoaded', runSetup);
+    </script>
+</body>
+</html>
