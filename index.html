@@ -206,15 +206,44 @@
         <!-- Dynamic Grid Dashboard (Visible by default) -->
         <main id="dashboard-view" class="space-y-6">
             
-            <!-- Real-time Search Panel ("Find Article") -->
-            <div class="bg-white/95 backdrop-blur shadow-md rounded-2xl p-4 flex flex-col sm:flex-row gap-4 items-center justify-between border border-white/40">
-                <div class="relative w-full sm:max-w-md">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-                        <i data-lucide="search" class="w-4.5 h-4.5"></i>
-                    </span>
-                    <input type="text" id="search-input" oninput="handleSearch()" placeholder="Find article..." class="w-full bg-slate-50 pl-11 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-slate-850 shadow-inner font-medium">
+            <!-- Real-time Search & Filters Panel ("Find Article", "All Authors", "All Months") -->
+            <div class="bg-white/95 backdrop-blur shadow-md rounded-2xl p-4 flex flex-col lg:flex-row gap-3 items-center justify-between border border-white/40">
+                <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto flex-grow items-center">
+                    <div class="relative w-full sm:max-w-xs md:max-w-sm">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </span>
+                        <input type="text" id="search-input" oninput="handleSearch()" placeholder="Find article..." class="w-full bg-slate-50 pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-slate-800 shadow-inner font-medium">
+                    </div>
+
+                    <!-- Author Filter Dropdown -->
+                    <div class="relative w-full sm:w-48">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 pointer-events-none">
+                            <i data-lucide="user" class="w-4 h-4"></i>
+                        </span>
+                        <select id="author-filter" onchange="handleAuthorFilter()" class="w-full bg-slate-50 pl-10 pr-8 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-slate-800 shadow-inner font-medium appearance-none cursor-pointer">
+                            <option value="">All Authors</option>
+                        </select>
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 pointer-events-none">
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </span>
+                    </div>
+
+                    <!-- Month Filter Dropdown -->
+                    <div class="relative w-full sm:w-48">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400 pointer-events-none">
+                            <i data-lucide="calendar" class="w-4 h-4"></i>
+                        </span>
+                        <select id="month-filter" onchange="handleMonthFilter()" class="w-full bg-slate-50 pl-10 pr-8 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent text-slate-800 shadow-inner font-medium appearance-none cursor-pointer">
+                            <option value="">All Months</option>
+                        </select>
+                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 text-slate-400 pointer-events-none">
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </span>
+                    </div>
                 </div>
-                <div id="article-count-badge" class="px-3.5 py-1.5 bg-teal-50 text-teal-800 border border-teal-100 text-xs font-bold rounded-lg whitespace-nowrap">
+
+                <div id="article-count-badge" class="px-3.5 py-1.5 bg-teal-50 text-teal-800 border border-teal-100 text-xs font-bold rounded-lg whitespace-nowrap self-end lg:self-auto">
                     0 Articles
                 </div>
             </div>
@@ -232,7 +261,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-900">No Documents Found</h3>
                 <p class="text-xs text-slate-500 leading-relaxed">
-                    We couldn't extract references from your primary directory document. Ensure standard hyperlinked documents are added inside.
+                    No matching articles found for your current search or filter selection.
                 </p>
             </div>
 
@@ -345,17 +374,17 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div class="space-y-1">
                                         <label for="form-name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Your Name</label>
-                                        <input type="text" name="entry.142523739" id="form-name" required placeholder="e.g. Robin" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850">
+                                        <input type="text" name="entry.142523739" id="form-name" required placeholder="e.g. Robin" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-800">
                                     </div>
                                     <div class="space-y-1">
                                         <label for="form-email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Email Address</label>
-                                        <input type="email" name="entry.1202066942" id="form-email" required placeholder="e.g. robin@domain.com" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850">
+                                        <input type="email" name="entry.1202066942" id="form-email" required placeholder="e.g. robin@domain.com" class="w-full bg-white border border-slate-200 px-4 py-2.5 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-800">
                                     </div>
                                 </div>
 
                                 <div class="space-y-1">
                                     <label for="form-comment" class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Your Comment</label>
-                                    <textarea name="entry.1801853130" id="form-comment" rows="4" required placeholder="What are your thoughts on this story? Keep it respectful..." class="w-full bg-white border border-slate-200 p-4 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-850"></textarea>
+                                    <textarea name="entry.1801853130" id="form-comment" rows="4" required placeholder="What are your thoughts on this story? Keep it respectful..." class="w-full bg-white border border-slate-200 p-4 text-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-slate-800"></textarea>
                                 </div>
 
                                 <div class="flex justify-between items-center pt-2">
@@ -532,6 +561,112 @@
         let articleRegistry = {}; // Starts clean in memory on every reload!
         let visibleArticlesCount = 9;
         let searchQuery = "";
+        let selectedAuthor = "";
+        let selectedMonth = "";
+        let currentArticleKey = null;
+
+        const MONTH_MAP = {
+            jan: "January", january: "January",
+            feb: "February", february: "February",
+            mar: "March", march: "March",
+            apr: "April", april: "April",
+            may: "May",
+            jun: "June", june: "June",
+            jul: "July", july: "July",
+            aug: "August", august: "August",
+            sep: "September", september: "September",
+            oct: "October", october: "October",
+            nov: "November", november: "November",
+            dec: "December", december: "December"
+        };
+
+        function getMonthYearFromDate(dateStr) {
+            if (!dateStr) return "";
+            const match = dateStr.match(/\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+(\d{4})/i);
+            if (match) {
+                const fullMonth = MONTH_MAP[match[1].toLowerCase()] || match[1];
+                return `${fullMonth} ${match[2]}`;
+            }
+            return "";
+        }
+
+        function getAuthorProfileUrl(authorName) {
+            if (!authorName) return "https://luxworldplus.com/about";
+            const slug = slugify(authorName);
+            return `https://luxworldplus.com/about/${encodeURIComponent(slug || authorName.trim().toLowerCase())}`;
+        }
+
+        function updateAuthorDropdown() {
+            const selectEl = document.getElementById('author-filter');
+            if (!selectEl) return;
+
+            const authorsSet = new Set();
+            Object.values(articleRegistry).forEach(item => {
+                if (item.signature && item.signature.trim()) {
+                    authorsSet.add(item.signature.trim());
+                }
+            });
+
+            if (selectedAuthor) {
+                authorsSet.add(selectedAuthor);
+            }
+
+            const sortedAuthors = Array.from(authorsSet).sort((a, b) => a.localeCompare(b));
+            const currentVal = selectedAuthor;
+
+            selectEl.innerHTML = `<option value="">All Authors</option>`;
+            sortedAuthors.forEach(author => {
+                const opt = document.createElement('option');
+                opt.value = author;
+                opt.textContent = author;
+                if (author.toLowerCase() === currentVal.toLowerCase()) {
+                    opt.selected = true;
+                }
+                selectEl.appendChild(opt);
+            });
+        }
+
+        function updateMonthDropdown() {
+            const selectEl = document.getElementById('month-filter');
+            if (!selectEl) return;
+
+            const monthsSet = new Set();
+            Object.values(articleRegistry).forEach(item => {
+                const my = getMonthYearFromDate(item.date);
+                if (my) {
+                    monthsSet.add(my);
+                }
+            });
+
+            if (selectedMonth) {
+                monthsSet.add(selectedMonth);
+            }
+
+            const monthOrder = [
+                "January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+
+            const sortedMonths = Array.from(monthsSet).sort((a, b) => {
+                const [mA, yA] = a.split(' ');
+                const [mB, yB] = b.split(' ');
+                const yearDiff = parseInt(yB || '0', 10) - parseInt(yA || '0', 10);
+                if (yearDiff !== 0) return yearDiff;
+                return monthOrder.indexOf(mB) - monthOrder.indexOf(mA);
+            });
+
+            const currentVal = selectedMonth;
+            selectEl.innerHTML = `<option value="">All Months</option>`;
+            sortedMonths.forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = m;
+                opt.textContent = m;
+                if (m.toLowerCase() === currentVal.toLowerCase()) {
+                    opt.selected = true;
+                }
+                selectEl.appendChild(opt);
+            });
+        }
 
         // Standardized, high quality SVGs matching the brand color palette
         const DEFAULT_THUMBNAILS = [
@@ -589,7 +724,7 @@
             }
 
             const urlParams = new URLSearchParams(window.location.search);
-            const activeKey = urlParams.get('article');
+            const activeKey = currentArticleKey || urlParams.get('article');
             let activeArticleObj = activeKey && articleRegistry[activeKey] ? articleRegistry[activeKey] : null;
             let cleanArticleName = activeArticleObj ? activeArticleObj.title.replace(/\[.*?\]/g, '').trim() : "None Selected (Grid Index View)";
 
@@ -762,6 +897,7 @@
             if (date || signature) {
                 const badgesEl = document.getElementById(`badges-${key}`);
                 if (badgesEl) {
+                    const authorUrl = signature ? getAuthorProfileUrl(signature) : '';
                     badgesEl.innerHTML = `
                         ${date ? `
                             <span class="bg-teal-50 px-2 py-0.5 rounded-md flex items-center gap-1">
@@ -769,9 +905,9 @@
                             </span>
                         ` : ''}
                         ${signature ? `
-                            <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[120px] truncate">
-                                <i data-lucide="pen-tool" class="w-2.5 h-2.5"></i> ${signature}
-                            </span>
+                            <a href="${authorUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="bg-slate-100 hover:bg-teal-100 text-slate-700 hover:text-teal-900 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[140px] truncate transition" title="View ${signature}'s profile">
+                                <i data-lucide="pen-tool" class="w-2.5 h-2.5 flex-shrink-0"></i> <span class="truncate">${signature}</span>
+                            </a>
                         ` : ''}
                     `;
                     lucide.createIcons();
@@ -886,11 +1022,18 @@
             const loadMoreEl = document.getElementById('load-more-container');
             const badgeEl = document.getElementById('article-count-badge');
 
+            updateAuthorDropdown();
+            updateMonthDropdown();
+
             gridEl.innerHTML = '';
             const allKeys = Object.keys(articleRegistry);
             const filteredKeys = allKeys.filter(key => {
                 const item = articleRegistry[key];
-                return `${item.title} ${item.description || ''} ${item.date || ''} ${item.signature || ''}`.toLowerCase().includes(searchQuery);
+                const matchesSearch = !searchQuery || `${item.title} ${item.description || ''} ${item.date || ''} ${item.signature || ''}`.toLowerCase().includes(searchQuery);
+                const matchesAuthor = !selectedAuthor || (item.signature && item.signature.trim().toLowerCase() === selectedAuthor.toLowerCase());
+                const itemMonthYear = getMonthYearFromDate(item.date);
+                const matchesMonth = !selectedMonth || (itemMonthYear && itemMonthYear.toLowerCase() === selectedMonth.toLowerCase());
+                return matchesSearch && matchesAuthor && matchesMonth;
             });
 
             badgeEl.textContent = `${filteredKeys.length} ${filteredKeys.length === 1 ? 'Article' : 'Articles'}`;
@@ -909,6 +1052,7 @@
                 const isSlide = item.type === "presentation";
                 const badgeLabel = isSlide ? "Sync Presentation" : "Sync Live";
                 const badgeIcon = isSlide ? "presentation" : "sparkles";
+                const authorUrl = item.signature ? getAuthorProfileUrl(item.signature) : '';
 
                 const card = document.createElement('div');
                 card.id = `card-${key}`;
@@ -923,7 +1067,7 @@
                         </div>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <!-- Card Metadata Header Area (Display Date and Signature) -->
+                        <!-- Card Metadata Header Area (Display Date and Clickable Author Signature) -->
                         <div id="badges-${key}" class="flex flex-wrap items-center gap-2 mb-2 text-[10px] font-bold text-teal-700 tracking-wider uppercase">
                             ${item.date ? `
                                 <span class="bg-teal-50 px-2 py-0.5 rounded-md flex items-center gap-1">
@@ -931,9 +1075,9 @@
                                 </span>
                             ` : ''}
                             ${item.signature ? `
-                                <span class="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[120px] truncate">
-                                    <i data-lucide="pen-tool" class="w-2.5 h-2.5"></i> ${item.signature}
-                                </span>
+                                <a href="${authorUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="bg-slate-100 hover:bg-teal-100 text-slate-700 hover:text-teal-900 px-2 py-0.5 rounded-md flex items-center gap-1 max-w-[140px] truncate transition" title="View ${item.signature}'s profile">
+                                    <i data-lucide="pen-tool" class="w-2.5 h-2.5 flex-shrink-0"></i> <span class="truncate">${item.signature}</span>
+                                </a>
                             ` : ''}
                         </div>
                         <h3 class="text-base font-bold text-slate-900 line-clamp-2 leading-snug group-hover:text-teal-700 transition mb-2">${item.title}</h3>
@@ -951,7 +1095,8 @@
 
             lucide.createIcons();
 
-            filteredKeys.slice(0, visibleArticlesCount).forEach(async (key) => {
+            // Sync metadata across all articles so Author & Month dropdowns populate completely
+            allKeys.forEach(async (key) => {
                 const item = articleRegistry[key];
                 
                 if (item.thumbnail && item.description && item.description !== 'Loading live description summary...' && !item.description.includes('Syncing live')) {
@@ -963,7 +1108,10 @@
                     const descEl = document.getElementById(`desc-${key}`); if (descEl) descEl.textContent = articleRegistry[key].description;
                     const presThumb = `data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23f59e0b\' opacity=\'0.1\'/><polygon points=\'160,95 160,155 215,125\' fill=\'%23f59e0b\'/></svg>`;
                     const imgEl = document.getElementById(`thumb-${key}`); if (imgEl) imgEl.src = presThumb;
-                    articleRegistry[key].thumbnail = presThumb; return;
+                    articleRegistry[key].thumbnail = presThumb;
+                    updateAuthorDropdown();
+                    updateMonthDropdown();
+                    return;
                 }
 
                 let fetchSuccess = false;
@@ -986,7 +1134,7 @@
                         let foundDate = item.date || "";
                         let foundSignature = item.signature || "";
 
-                        const dateRegex = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}(?:\s*,\s*\d{1,2}:\d{2}(w|[\s\u2000-\u206F\u00A0\u202f])*[AP]M)?/i;
+                        const dateRegex = /\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},?\s+\d{4}(?:\s*,\s*\d{1,2}:\d{2}(?:\s|[\s\u2000-\u206F\u00A0\u202f])*[AP]M)?/i;
 
                         const allElements = Array.from(doc.querySelectorAll('p, span, td, div'));
                         const textElements = allElements.map(el => el.textContent.trim()).filter(Boolean);
@@ -1042,7 +1190,13 @@
                         articleRegistry[key].signature = foundSignature;
 
                         fetchSuccess = true;
+                        updateAuthorDropdown();
+                        updateMonthDropdown();
                         updateCardDOM(key, targetImageSrc, docSummary, foundDate, foundSignature);
+
+                        if ((selectedAuthor || selectedMonth) && (foundSignature || foundDate)) {
+                            buildArticlesGrid();
+                        }
 
                     } catch (e) {
                         attemptsLeft--;
@@ -1152,7 +1306,7 @@
                             <h5 class="text-sm font-bold text-slate-800 truncate">${comm.name}</h5>
                             <span class="text-[10px] text-slate-400 font-semibold whitespace-nowrap">${comm.timestamp}</span>
                         </div>
-                        <p class="text-xs text-slate-650 leading-relaxed break-words">${comm.comment}</p>
+                        <p class="text-xs text-slate-600 leading-relaxed break-words">${comm.comment}</p>
                     </div>
                 `;
                 feedContainer.appendChild(commentCard);
@@ -1198,7 +1352,7 @@
             setTimeout(() => { statusMsg.classList.add('hidden'); }, 4000);
 
             const urlParams = new URLSearchParams(window.location.search);
-            const activeKey = urlParams.get('article');
+            const activeKey = currentArticleKey || urlParams.get('article');
             if (activeKey) {
                 setTimeout(() => { fetchArticleComments(activeKey); }, 1500); 
             }
@@ -1223,9 +1377,38 @@
             triggerDataSyncPipeline();
         }
 
+        function handleAuthorFilter() {
+            selectedAuthor = document.getElementById('author-filter').value;
+            visibleArticlesCount = 9;
+            try {
+                const url = new URL(window.location.href);
+                if (selectedAuthor) url.searchParams.set('author', selectedAuthor); else url.searchParams.delete('author');
+                window.history.replaceState({}, '', url);
+            } catch (e) {
+                console.warn('History replaceState restricted:', e);
+            }
+            buildArticlesGrid();
+            triggerDataSyncPipeline();
+        }
+
+        function handleMonthFilter() {
+            selectedMonth = document.getElementById('month-filter').value;
+            visibleArticlesCount = 9;
+            try {
+                const url = new URL(window.location.href);
+                if (selectedMonth) url.searchParams.set('month', selectedMonth); else url.searchParams.delete('month');
+                window.history.replaceState({}, '', url);
+            } catch (e) {
+                console.warn('History replaceState restricted:', e);
+            }
+            buildArticlesGrid();
+            triggerDataSyncPipeline();
+        }
+
         function loadMoreArticles() { visibleArticlesCount += 9; buildArticlesGrid(); }
         
         function selectArticle(key) { 
+            currentArticleKey = key;
             try {
                 const url = new URL(window.location.href); 
                 url.searchParams.set('article', key); 
@@ -1237,6 +1420,7 @@
         }
         
         function navigateToGrid() { 
+            currentArticleKey = null;
             try {
                 const url = new URL(window.location.href); 
                 url.searchParams.delete('article'); 
@@ -1286,7 +1470,7 @@
 
         async function route() {
             const urlParams = new URLSearchParams(window.location.search);
-            const activeKey = urlParams.get('article');
+            const activeKey = currentArticleKey || urlParams.get('article');
             const dashboardEl = document.getElementById('dashboard-view');
             const readerEl = document.getElementById('reader-view');
             const backBtn = document.getElementById('btn-back-to-grid');
@@ -1327,6 +1511,7 @@
                     
                     const metaBannerEl = document.getElementById('reader-metadata-banner');
                     if (targetArticle.date || targetArticle.signature) {
+                        const authorUrl = targetArticle.signature ? getAuthorProfileUrl(targetArticle.signature) : '';
                         metaBannerEl.innerHTML = `
                             <div class="flex flex-wrap items-center gap-4 mb-8 p-5 bg-teal-50/70 border border-teal-100/60 rounded-xl">
                                 ${targetArticle.date ? `
@@ -1336,10 +1521,10 @@
                                     </div>
                                 ` : ''}
                                 ${targetArticle.signature ? `
-                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}">
+                                    <a href="${authorUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-teal-900 hover:text-teal-700 font-bold text-sm transition ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}" title="Visit ${targetArticle.signature}'s profile">
                                         <i data-lucide="pen-tool" class="w-4 h-4 text-teal-700"></i>
-                                        <span>Signature: ${targetArticle.signature}</span>
-                                    </div>
+                                        <span class="underline decoration-teal-400 underline-offset-4">Signature: ${targetArticle.signature}</span>
+                                    </a>
                                 ` : ''}
                             </div>
                         `;
@@ -1366,6 +1551,7 @@
 
                     const metaBannerEl = document.getElementById('reader-metadata-banner');
                     if (targetArticle.date || targetArticle.signature) {
+                        const authorUrl = targetArticle.signature ? getAuthorProfileUrl(targetArticle.signature) : '';
                         metaBannerEl.innerHTML = `
                             <div class="flex flex-wrap items-center gap-4 mb-8 p-5 bg-teal-50/70 border border-teal-100/60 rounded-xl">
                                 ${targetArticle.date ? `
@@ -1375,10 +1561,10 @@
                                     </div>
                                 ` : ''}
                                 ${targetArticle.signature ? `
-                                    <div class="flex items-center gap-2 text-teal-900 font-bold text-sm ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}">
+                                    <a href="${authorUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-teal-900 hover:text-teal-700 font-bold text-sm transition ${targetArticle.date ? 'md:border-l md:border-teal-200 md:pl-4' : ''}" title="Visit ${targetArticle.signature}'s profile">
                                         <i data-lucide="pen-tool" class="w-4 h-4 text-teal-700"></i>
-                                        <span>Signature: ${targetArticle.signature}</span>
-                                    </div>
+                                        <span class="underline decoration-teal-400 underline-offset-4">Signature: ${targetArticle.signature}</span>
+                                    </a>
                                 ` : ''}
                             </div>
                         `;
@@ -1459,6 +1645,15 @@
             const q = urlParams.get('q');
             if (q) { searchQuery = q.toLowerCase().trim(); document.getElementById('search-input').value = q; }
 
+            const authorParam = urlParams.get('author');
+            if (authorParam) { selectedAuthor = authorParam.trim(); }
+
+            const monthParam = urlParams.get('month');
+            if (monthParam) { selectedMonth = monthParam.trim(); }
+
+            const articleParam = urlParams.get('article');
+            if (articleParam) { currentArticleKey = articleParam.trim(); }
+
             // Programmatically attach iframe load handler for comment submissions
             const commentIframe = document.getElementById('comment_submit_target');
             if (commentIframe) {
@@ -1485,7 +1680,11 @@
             await route();
         }
 
-        window.addEventListener('popstate', route);
+        window.addEventListener('popstate', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            currentArticleKey = urlParams.get('article');
+            route();
+        });
         window.addEventListener('DOMContentLoaded', runSetup);
     </script>
 </body>
